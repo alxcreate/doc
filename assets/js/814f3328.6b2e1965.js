@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkgithub_docusaurus=self.webpackChunkgithub_docusaurus||[]).push([[472],{5513:s=>{s.exports=JSON.parse('{"title":"All posts","items":[{"title":"First Blog Post","permalink":"/github-docusaurus/blog/2024/06/1/first-blog-post","unlisted":false}]}')}}]);

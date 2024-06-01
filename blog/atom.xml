@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://alxcreate.github.io/github-docusaurus/blog</id>
+    <title>Docusaurus Blog</title>
+    <updated>2024-06-01T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://alxcreate.github.io/github-docusaurus/blog"/>
+    <subtitle>Docusaurus Blog</subtitle>
+    <icon>https://alxcreate.github.io/github-docusaurus/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[First Blog Post]]></title>
+        <id>https://alxcreate.github.io/github-docusaurus/blog/2024/06/1/first-blog-post</id>
+        <link href="https://alxcreate.github.io/github-docusaurus/blog/2024/06/1/first-blog-post"/>
+        <updated>2024-06-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies.]]></summary>
+        <content type="html"><![CDATA[<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies.</p>
+<p>Use the power of React to create interactive blog posts.</p>]]></content>
+        <author>
+            <name>Aleksey Abramov</name>
+            <uri>https://github.com/alxcreate</uri>
+        </author>
+    </entry>
+</feed>
