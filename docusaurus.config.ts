@@ -1,24 +1,26 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import tailwindPlugin from './plugins/tailwind-plugin.cjs';
+import fs from 'fs';
 
 const config: Config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: 'Docusaurus',
+  tagline: 'Notes on Docusaurus',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://${organizationName}.github.io',
+  url: 'https://alxcreate.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/${projectName}/',
+  baseUrl: '/github-docusaurus/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'alxcreate', // Usually your GitHub org/user name.
   projectName: 'github-docusaurus', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn', // 'ignore' | 'log' | 'warn' | 'throw'
   onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
@@ -29,6 +31,12 @@ const config: Config = {
     locales: ['en'],
   },
 
+  plugins: [
+    tailwindPlugin,
+    'docusaurus-plugin-sass',
+    require.resolve('docusaurus-plugin-image-zoom')
+  ],
+
   presets: [
     [
       'classic',
@@ -38,14 +46,16 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/${organizationName}/${projectName}/tree/main/',
+            'https://github.com/alxcreate/github-docusaurus/tree/main/',
         },
         blog: {
+          routeBasePath: 'blog',
+          blogSidebarTitle: 'All posts',
+          blogSidebarCount: 'ALL',
           showReadingTime: true,
-          // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/${organizationName}/${projectName}/tree/main/',
+            'https://github.com/alxcreate/github-docusaurus/tree/main/',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -54,14 +64,30 @@ const config: Config = {
     ],
   ],
 
+  themes: [
+    '@docusaurus/theme-live-codeblock',
+    [
+      // @ts-ignore
+      "@easyops-cn/docusaurus-search-local",
+      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+      // @ts-ignore
+      ({
+        hashed: true,
+        language: ["ru", "en"],
+        highlightSearchTermsOnTargetPage: true,
+        explicitSearchResultPath: true,
+      }),
+    ],
+  ],
+
   themeConfig: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'My Site',
+      title: 'Docusaurus',
       logo: {
-        alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        alt: 'Logo',
+        src: 'img/docusaurus.png',
       },
       items: [
         {
@@ -72,7 +98,7 @@ const config: Config = {
         },
         {to: '/blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/alxcreate/github-docusaurus',
           label: 'GitHub',
           position: 'right',
         },
@@ -80,47 +106,6 @@ const config: Config = {
     },
     footer: {
       style: 'dark',
-      links: [
-        {
-          title: 'Docs',
-          items: [
-            {
-              label: 'Tutorial',
-              to: '/docs/intro',
-            },
-          ],
-        },
-        {
-          title: 'Community',
-          items: [
-            {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
-            },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'Blog',
-              to: '/blog',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
-            },
-          ],
-        },
-      ],
       copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
     },
     prism: {
