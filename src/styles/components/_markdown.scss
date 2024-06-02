@@ -58,7 +58,7 @@ html[data-theme='dark'] {
   p,
   li,
   .tabs-container {
-    line-height: 200%;
+    line-height: 180%;
   }
 
   // have to override style coming from .h1Heading_node_modules-\@docusaurus-theme-classic-lib-next-theme-Heading-styles-module
@@ -79,7 +79,7 @@ html[data-theme='dark'] {
   }
 
   h1 {
-    margin-block-start: 5rem;
+    margin-block-start: 1rem;
   }
 
   h2 + h3,

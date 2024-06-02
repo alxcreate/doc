@@ -120,8 +120,8 @@ const config: Config = {
       ],
     },
     prism: {
-      theme: prismThemes.dracula,
-      darkTheme: prismThemes.dracula,
+      theme: prismThemes.oneLight,
+      darkTheme: prismThemes.oneDark,
       additionalLanguages: [
         'java',
         'json',
