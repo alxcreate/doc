@@ -2,7 +2,6 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import tailwindPlugin from './plugins/tailwind-plugin.cjs';
-import fs from 'fs';
 
 const config: Config = {
   title: 'Docusaurus',
@@ -42,6 +41,7 @@ const config: Config = {
       'classic',
       {
         docs: {
+          breadcrumbs: false,
           sidebarPath: './sidebars.ts',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
@@ -58,7 +58,11 @@ const config: Config = {
             'https://github.com/alxcreate/github-docusaurus/tree/main/',
         },
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: [
+            require.resolve('./node_modules/modern-normalize/modern-normalize.css'),
+            require.resolve('./node_modules/@ionic-internal/ionic-ds/dist/tokens/tokens.css'),
+            require.resolve('./src/styles/custom.scss'),
+          ],
         },
       } satisfies Preset.Options,
     ],
@@ -81,13 +85,19 @@ const config: Config = {
   ],
 
   themeConfig: {
-    // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    colorMode: {
+      defaultMode: 'light',
+    },
     navbar: {
-      title: 'Docusaurus',
+      hideOnScroll: false,
       logo: {
-        alt: 'Logo',
-        src: 'img/docusaurus.png',
+        alt: 'Site Logo',
+        src: `img/docusaurus.png`,
+        srcDark: `img/docusaurus.png`,
+        href: '/',
+        target: '_self',
+        // width: 139,
+        // height: 28,
       },
       items: [
         {
@@ -98,15 +108,16 @@ const config: Config = {
         },
         {to: '/blog', label: 'Blog', position: 'left'},
         {
+          type: 'html',
+          position: 'right',
+          value: '<div class="separator" aria-hidden></div>',
+        },
+        {
           href: 'https://github.com/alxcreate/github-docusaurus',
           label: 'GitHub',
           position: 'right',
         },
       ],
-    },
-    footer: {
-      style: 'dark',
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
