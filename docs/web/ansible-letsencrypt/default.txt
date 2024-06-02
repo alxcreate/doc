@@ -1,0 +1,26 @@
+server {
+	listen 80;
+	root /var/www;
+	index index.html;
+    server_name example.com www.example.com;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+}
+
+server {
+	listen 443 ssl;
+	root /var/www;
+	index index.html;
+	server_name example.com www.example.com;
+
+    ssl_certificate /etc/letsencrypt/certs/example.com.crt;
+    ssl_certificate_key /etc/letsencrypt/keys/example.com.key;
+    ssl_protocols TLSv1.3;
+    ssl_ciphers HIGH:!aNULL:!MD5;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+}

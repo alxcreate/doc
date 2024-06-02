@@ -1,0 +1,6 @@
+---
+aws:
+  hosts:
+    node01:
+      ansible_host: 1.1.1.1 # Public IP
+      ansible_user: ubuntu

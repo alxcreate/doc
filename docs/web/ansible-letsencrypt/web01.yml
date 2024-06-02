@@ -1,0 +1,70 @@
+---
+- hosts: node01
+  become: true
+
+  tasks:
+    - name: Install aptitude
+      apt:
+        name: aptitude
+        state: latest
+        update_cache: true
+
+    - name: Install required system packages
+      apt:
+        pkg:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - software-properties-common
+          - python3-pip
+          - virtualenv
+          - python3-setuptools
+        state: latest
+        update_cache: true
+
+    - name: Add Docker GPG apt Key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Add Docker Repository
+      apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu focal stable
+        state: present
+
+    - name: Install docker-ce
+      apt:
+        name: docker-ce
+        state: latest
+        update_cache: true
+
+    - name: Install Docker SDK for Python
+      ansible.builtin.pip:
+        name:
+          - "docker==6.1.3"
+          - "docker-compose"
+
+    - name: Log into DockerHub
+      docker_login:
+        username: username # DockerHub username
+        password: "password"
+
+    - name: Ensure github.com is a known host
+      lineinfile:
+        dest: /root/.ssh/known_hosts
+        create: yes
+        state: present
+        line: "{{ lookup('pipe', 'ssh-keyscan -t rsa github.com') }}"
+        regexp: "^github\\.com"
+
+    - name: Copy files
+      copy:
+        src: ./web01
+        dest: /home
+        mode: 0777
+
+    - name: Deploy containers
+      community.docker.docker_compose:
+        project_src: /home/web01
+        files:
+          - docker-compose.yml

@@ -1,0 +1,10 @@
+version: '3'
+services:
+  web01:
+    container_name: web01
+    image: docker/image
+    restart: always
+    command: /bin/sh -c "service nginx start && certbot --nginx -d example.com -d www.example.com --non-interactive --agree-tos -m alx@example.com && tail -f /dev/null"
+    ports:
+      - "80:80"
+      - "443:443"
