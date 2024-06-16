@@ -12,12 +12,12 @@ const config: Config = {
   url: 'https://alxcreate.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/github-docusaurus/',
+  baseUrl: '/doc/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'alxcreate', // Usually your GitHub org/user name.
-  projectName: 'github-docusaurus', // Usually your repo name.
+  projectName: 'doc', // Usually your repo name.
 
   onBrokenLinks: 'warn', // 'ignore' | 'log' | 'warn' | 'throw'
   onBrokenMarkdownLinks: 'warn',
@@ -46,7 +46,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/alxcreate/github-docusaurus/tree/main/',
+            'https://github.com/alxcreate/doc/tree/main/',
         },
         blog: {
           routeBasePath: 'blog',
@@ -55,7 +55,7 @@ const config: Config = {
           showReadingTime: true,
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/alxcreate/github-docusaurus/tree/main/',
+            'https://github.com/alxcreate/doc/tree/main/',
         },
         theme: {
           customCss: [
@@ -113,7 +113,7 @@ const config: Config = {
           value: '<div class="separator" aria-hidden></div>',
         },
         {
-          href: 'https://github.com/alxcreate/github-docusaurus',
+          href: 'https://github.com/alxcreate/doc',
           label: 'GitHub',
           position: 'right',
         },
