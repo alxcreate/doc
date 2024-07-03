@@ -120,7 +120,7 @@ const config: Config = {
       ],
     },
     prism: {
-      theme: prismThemes.oneLight,
+      theme: prismThemes.okaidia,
       darkTheme: prismThemes.oneDark,
       additionalLanguages: [
         'java',
